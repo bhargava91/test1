@@ -64,30 +64,30 @@ router.get('/imgupload', function(req, res) {
 });
 /* GET contact page. */
 
-router.get('/userlist', function(req, res) {
-    var db = req.db;
-    var collection = db.get('usercollection');
-    collection.find({},{},function(e,docs){
-        res.render('userlist', {
-            "userlist" : docs
-        });
-    });
-});
+// router.get('/userlist', function(req, res) {
+//     var db = req.db;
+//     var collection = db.get('usercollection');
+//     collection.find({},{},function(e,docs){
+//         res.render('userlist', {
+//             "userlist" : docs
+//         });
+//     });
+// });
 /* GET New User page. */
-router.get('/newuser', function(req, res) {
-    res.render('newuser', { title: 'Add New User' });
-});
+// router.get('/newuser', function(req, res) {
+//     res.render('newuser', { title: 'Add New User' });
+// });
 
 //storing user details
 
 router.post('/signup', function(req, res) {
 
      // Set our internal DB variable
-     var Firstname = req.param('fname');
-    var Lastname = req.param('lname');
-    var Emailid=req.param('email');
-    var password=req.param('pass');
-    var phoneno=req.param('phone');
+    //  var Firstname = req.param('fname');
+    // var Lastname = req.param('lname');
+    // var Emailid=req.param('email');
+    // var password=req.param('pass');
+    // var phoneno=req.param('phone');
 
      var db = req.db;
      var collection = db.get('user');
@@ -124,7 +124,7 @@ router.post('/signup', function(req, res) {
            {
              // And forward to success page
              //res.redirect("home");
-             res.send("success");
+             res.json({message:'success'});
            } });
          }
          else
@@ -358,6 +358,7 @@ router.get('/view1', function(req, res) {
        	var data=doc;
          console.log("Return Value : ",data);
        // console.log(doc.value);
+       //JSON.stringify(data, null, '\t');
         res.send(data);
        }
    });
